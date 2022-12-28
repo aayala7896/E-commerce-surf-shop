@@ -1,0 +1,32 @@
+<html>
+    <head>
+        {% load static %}
+        {% include "nav.html"%}
+        {% include "bootstrap.html"%}
+        <title> About Me</title>
+      
+        <link rel="stylesheet" href="{% static 'style1.css' %}">
+  
+
+    </head>
+    <body>
+        <div class="container col-md-12">
+            <h2 class="display-4"> About Me </h2>
+            <hr class="my-4">
+            <div class="clearfix content-heading">
+                <div class="row">
+                    <div class="col-2">
+                        <img src="{%static 'IMG_2017.jpg' %}" class="img-thumbnail rounded-circle" alt="...">
+                    </div>
+                    <div class="col-6">
+                        <p>
+                            My name is Alex Ayala and I am a Computer Science Major at Chico State. A few of my hobbies are hiking,
+                            surfing, fishing, and working out. Some of my goals in life is to get my bachelors, become a full-stack developer, and 
+                            visit every national park in the United States.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

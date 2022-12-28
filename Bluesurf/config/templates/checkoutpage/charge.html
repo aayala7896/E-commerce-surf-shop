@@ -1,0 +1,19 @@
+{% include "bootstrap.html" %}
+{% include "nav.html" %}
+{%load mathfilters %}
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+            <h2>Thanks for your order!</h2>
+            <h5>Order #: {{table_data.id}}</h5>
+            <h5>Total: {% with numerator=table_data.orderTotal denominator=100 %}
+                ${{ numerator|div:denominator }}
+                {% endwith %}
+            </h5>
+            <h5> Date Purchased: {{table_data.dataPurchased}}</h5>
+
+        <a class="badge badge-success" href="/orders/" >My Orders</a>
+    </div>
+</div>
+
+{% endblock content %}

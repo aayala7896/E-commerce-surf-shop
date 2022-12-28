@@ -1,0 +1,36 @@
+<html>
+    <head>
+        {% include "bootstrap.html" %}
+        {% load crispy_forms_tags %}
+        {% load static %}
+    </head>
+    <body>
+        {% include "nav.html" %}
+        <div class="container col-md-5">
+            <div class="jumbotron">
+                <h1 class="display-4 text-center">Login</h1>
+                <hr class="my-4">
+                <form action="/login/" method="POST">
+                    {% csrf_token %}
+                    <div class="form-row justify-content-center">
+                        <div class="form-group col-md-6">
+                            {{login_form.username|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="form-group col-md-6">
+                            {{login_form.password|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="form-group col-md-6">
+                            <input type="submit" class="btn btn-primary btn-lg btn-block" value = "Login"/>
+                        </div>
+                    </div>
+                </form>
+                <p class="font-weight-light text-center">Click <a href="/join">Here</a> To Join</p>
+            </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Order</title>
+        {%load static%}
+        {% include 'bootstrap.html'%}
+        {% include 'nav.html'%}
+        {% load cart_tag %}
+        {%load mathfilters %}
+       
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shopify-cartjs/1.1.0/cart.min.js"></script>
+    </head>
+    <body>
+        {%if not table_data%}
+            <p class="text-monospace">There are no orders to display.</p>
+        {%else%}
+</div>
+    <div class="col-md-12">
+        <table class="table table-hover shadow p-3 mb-5 bg-white rounded">
+            <thead class="thead-light">
+            <tr>
+                <th class="font-weight-light" scope="col">Order#</th>
+                <th class="font-weight-light" scope="col">Date of completed purchased</th>
+                <th class="font-weight-light" scope="col">Total</th>
+                
+            </tr>
+             </thead>
+             <tbody class="thead-dark">
+            
+            
+        {%for row in table_data%}
+        
+            <tr >
+                <td>
+                    {{row.id}}
+                </td>
+                <td>
+                    {{row.dataPurchased}}
+                    
+                </td>
+                <td>
+                    {% with numerator=row.orderTotal denominator=100 %}
+                        ${{ numerator|div:denominator }}
+                    {% endwith %}
+                  
+                </td>
+                
+            </tr>  
+        
+            {%endfor%} 
+        
+        </table>
+    
+        {%endif%}
+
+    </body>
+</html>

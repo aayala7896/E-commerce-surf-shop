@@ -1,0 +1,10 @@
+asgiref==3.2.10
+Django==3.0.9
+sqlparse==0.2.4
+django-crispy-forms==1.14.0
+stripe==5.0.0
+djangorestframework==3.14.0
+django-shopping-cart==0.1
+django-mathfilters==1.0.0
+django-credit-cards==0.4.1
+Pillow==9.3.0

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {%load static%}
+        {% include 'bootstrap.html'%}
+        {% include 'nav.html'%}
+        {% load cart_tag %}
+        {% load mathfilters%}
+        {% load crispy_forms_tags %}
+  
+        <link rel="stylesheet" href="{% static 'style1.css' %}">
+        <title>Home</title>
+    </head>
+    <body>
+       
+          <div class="container">
+            <div class="openingstatment" style = "margin:auto;width:50%;padding:20px;">
+              <h2 class="display-4">Surf Boards</h2>
+              <p class="text-monospace" > Surf Boards are sourced from California shapers who specialize in longboards  </p>
+              
+              <form class="form-inline" method="GET" >
+                {{form | crispy}}
+              
+              
+                <button type="submit" class="btn btn-primary my-1" value = "sort" >Submit</button>
+              </form>
+            </div>
+
+            <div class="row">
+              {%for item in table_data %}
+              <div class="col">
+
+                      <div class="card" style="width: 18rem;">
+                          <img src="/media/{{item.image}}" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-text font-weight-normal">{{item.name}}</h5>
+                           
+                            {% with numerator=item.price denominator=100 %}
+                              <h6 class="card-text text-muted">${{ numerator|div:denominator }}</h6>
+                             {% endwith %}
+                             <ul class="list-unstyled mt-3 mb-4">
+                              <li class="card-text">{{item.description}}</li> 
+                             </ul>
+
+                            <form class="form-inline">
+                              <a class="align-self-end btn btn-lg btn-block btn-success" href="cart/add/{{item.id }}" > Add to Cart</a>
+                            </form>
+
+                          </div> 
+                      </div>
+              </div>
+              {% endfor %}
+            </div>     
+          </div>
+        
+    </body>
+</html>

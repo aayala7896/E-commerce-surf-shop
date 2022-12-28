@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% include "nav.html" %}
+        {% include "bootstrap.html" %}
+        {% load crispy_forms_tags %}
+        {% load static %}
+        
+    </head>
+    <body>
+        
+        <div class="container col-md-6"  >
+            <div class = "jumbotron ">
+                <h1 class="display-4 text-center">Create an account</h1>
+                <hr class="my-4">
+                <form method="POST">    
+                    {% csrf_token %}
+                    <div class="form-row justify-content-center">
+                        <div class="form-group col-md-6">
+                            {{join_form.first_name|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="form-group col-md-6">
+                            {{join_form.last_name|as_crispy_field}}
+                        </div>
+                    </div>
+
+                    <div class="form-row justify-content-center">
+                        <div class="form-group col-md-6">
+                            {{join_form.email|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="form-group col-md-6">
+                            {{join_form.username|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="form-group col-md-6">
+                            {{join_form.password|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="form-group col-md-6">
+                            <input type = "submit" class = "btn btn-primary btn-lg btn-block" value = "Join"/>    
+                        </div>
+                    </div> 
+                    
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+{% include "nav.html" %}
+{% block content %}
+{%load static %}
+{% include "bootstrap.html" %}
+{% load crispy_forms_tags %}
+<link rel="stylesheet" href={% static 'style1.css'%}>
+
+<div class="container">
+    <div class="jumbotron">
+  <h2 class="display-4 text-center">Checkout</h2>
+  <form action="{% url 'charge' %}" method="post" class="text-center">
+    {% csrf_token %}
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_51M5DBmFXcXR91px2BLkS8S5C0wqH0WKf8XKnatObEr8VyOH9DMHcc1nzLP0B3qTQTAJC4kh8ZKMbXLaL5EGY9IJT00feroscin"
+            data-description="Check Out"
+            data-amount="{{cartTotal}}"
+            data-locale="auto">
+    </script>
+  </form>
+</div>
+</div>
+{% endblock content %}

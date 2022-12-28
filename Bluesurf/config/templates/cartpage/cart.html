@@ -1,0 +1,90 @@
+<html>
+    <head>
+        {%load static%}
+        {%load mathfilters %}
+        {% include 'bootstrap.html'%}
+        {% include 'nav.html'%}
+        {% load cart_tag%}
+        <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+        <script src="https://js.stripe.com/v3/"></script>
+        <link rel="stylesheet" href="{% static 'style1.css' %}">
+        <title>View Cart</title>
+    </head>
+    <body>
+        <div class="container">
+          <div class="jumbotron">
+            <h1>My Cart</h1>
+
+            <div class="row">
+              <div class="col-8">
+                {%if cartTotal > 0 %}
+                <table class="table">
+                    <thead>
+      
+                      <tr>
+                        <th scope="col" >Product</th>
+                        <th scope="col"></th>
+
+                        <th scope="col">Price</th>
+                        <th scope="col">Quanitity</th>
+                       
+                      </tr>
+                    </thead>
+                    
+                    <tbody>
+                     
+                     
+                      
+                      
+                      {%for key,value in request.session.cart.items%}
+                      <tr>
+                       
+                        <td>
+                          <div class="col-sm-4 nopadding" style="padding:0">
+                            <img src="{{value.image}}" class="img-fluid" alt="...">  
+                          </div>
+                          
+                        </td>
+                        <td >{{value.name}}</td>
+                        {% with numerator=value.price denominator=100 %}
+                        <td>${{ numerator|div:denominator }}</td>
+                        {% endwith %}
+                        <td>
+                          {% if value.quantity > 1 %}
+                          <a href="{% url 'item_decrement' value.product_id %}">-</a>
+                          {%else %}
+                          <a href="{% url 'item_remove' value.product_id %}">-</a>
+
+                          {%endif%}
+
+                          {{value.quantity}}
+                          <a href="{% url 'item_increment' value.product_id %}">+</a>
+                        </td>
+
+                      </tr>
+                      {%endfor%}
+                      
+                      
+                    </tbody>
+                  </table>
+                  {%else%}
+                  <p class="text-monospace">Cart is Empty</p>
+                  {%endif%}
+              </div>
+              {% if cartTotal > 0 %}
+              <div class="col-4">
+              
+               <p class="text-monospace">Total: ${{cartTotal}}</p>
+                <a class="btn btn-primary btn-block" href="{% url 'payment' %}" role="button">CHECK OUT</a>
+                
+              </div>
+              {%endif%}
+              
+            </div> 
+          </div>
+
+          
+        </div>
+      </div>
+    </body>
+</html>

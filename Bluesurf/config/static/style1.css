@@ -1,0 +1,47 @@
+.navbar {
+    margin-bottom: 0px;
+}
+
+
+.carousel-inner{
+    margin-bottom: 20px;
+}
+.overlay { 
+    color:#fff;
+    position:absolute;
+    z-index:12;
+    top:35%;
+    left:0;
+    width:100%;
+    text-align:center;
+  }
+  body{
+    background-color: #f2edda;
+    margin-bottom: 20px;
+}
+td{
+    text-align: center;
+}
+.carouselPicture{
+    opacity: 0.9;
+  }
+.display-3{
+    user-select: none;
+}
+
+.img-thumbnail{
+    max-width: 100px;
+    max-height: 100px;
+}
+ 
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+ }
+
+ 
+
+ h2{
+    text-align: center;
+ }
+
